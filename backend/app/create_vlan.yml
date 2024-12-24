@@ -1,0 +1,12 @@
+---
+- name: Create VLANs on switches
+  hosts: switches
+  gather_facts: no
+  tasks:
+    - name: Create VLAN
+      ios_config:
+        lines:
+          - "vlan {{ item.vlan_id }}"
+          - "name {{ item.name }}"
+        parents: []
+      loop: "{{ vlans }}"
