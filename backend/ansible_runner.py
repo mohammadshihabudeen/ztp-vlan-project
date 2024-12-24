@@ -1,11 +1,12 @@
 import paramiko
 
 def run_ansible_playbook(extra_vars):
+    print(extra_vars)
     host = "your_ubuntu_vm_ip"
     username = "your_ubuntu_username"
     password = "your_ubuntu_password"
-    playbook_path = "/path/to/create_vlan.yml"
-    inventory_path = "/path/to/inventory.ini"
+    playbook_path = "/create_vlan.yml"
+    inventory_path = "/inventory.ini"
 
     try:
         ssh = paramiko.SSHClient()
