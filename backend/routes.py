@@ -5,8 +5,8 @@ blueprint = Blueprint('api', __name__)
  
 # Mock switches for the frontend to use
 switches = [
-    {"id": "switch1", "ip": "192.168.40.30"},
-    {"id": "switch2", "ip": "192.168.40.10"},
+    {"id": "switch 1", "ip": "192.168.17.2"},
+    {"id": "switch 2", "ip": "192.168.40.10"},
 ]
  
 @blueprint.route('/switches', methods=['GET'])
