@@ -4,16 +4,8 @@ import SwitchList from "./SwitchList";
 import VlanForm from "./VlanForm";
 
 const Operations = () => {
-  const [selectedSwitch, setSelectedSwitch] = useState(null);
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false); // To handle loading state
-  const [timer, setTimer] = useState(0); // For the countdown timer
-  const [createdVlans, setCreatedVlans] = useState([]); // Store names of created VLANs
-
-  const goBack = () => {
-    setSelectedSwitch(null);
-    setMessage(""); // Clear any messages when going back
-  };
+    const [selectedSwitch, setSelectedSwitch] = useState(null);
+    const [message, setMessage] = useState('');
 
   const handleSwitchSelect = (sw) => {
     setSelectedSwitch(sw);
@@ -64,47 +56,19 @@ const Operations = () => {
           Switch Operations
         </h2>
 
-        {/* Switch List or VLAN Form */}
-        {!selectedSwitch ? (
-          <SwitchList onSelect={handleSwitchSelect} />
-        ) : (
-          <>
-            <h3 className="text-lg font-medium text-gray-700">
-              Selected Switch: {selectedSwitch.ip}
-            </h3>
-            <VlanForm onSubmit={handleVlanSubmit} />
-            <button
-              type="button"
-              onClick={goBack}
-              className="mt-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition duration-300"
-            >
-              Back to Switch List
-            </button>
-          </>
-        )}
-
-        {/* Displaying Loading or Message */}
-        {loading && (
-          <p className="mt-4 text-gray-600">
-            VLAN creation in process... Time elapsed: {timer}s
-          </p>
-        )}
-
-        {message && !loading && (
-          <div className="mt-4 text-gray-600">
-            <p>{message}</p>
-            {createdVlans.length > 0 && (
-              <ul className="mt-2">
-                {createdVlans.map((vlan, index) => (
-                  <li key={index}>VLAN Name: {vlan}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+                {/* Switch List or VLAN Form */}
+                {!selectedSwitch ? (
+                    <SwitchList onSelect={handleSwitchSelect} />
+                ) : (
+                    <>
+                        <h3 className="text-lg font-medium text-gray-700">Selected Switch: {selectedSwitch.ip}</h3>
+                        <VlanForm onSubmit={handleVlanSubmit} />
+                    </>
+                )}
+                {message && <p className="mt-4 text-gray-600">{message}</p>}
+            </div>
+        </div>
+    );
 };
 
 export default Operations;
