@@ -7,6 +7,12 @@ const Operations = () => {
     const [selectedSwitch, setSelectedSwitch] = useState(null);
     const [message, setMessage] = useState('');
 
+    // Go back to the list of switches
+    const goBack = () => {
+        setSelectedSwitch(null);
+        setMessage(''); // Clear any messages when going back
+    };
+
     const handleSwitchSelect = (sw) => {
         setSelectedSwitch(sw);
         setMessage('');
@@ -35,6 +41,13 @@ const Operations = () => {
                     <>
                         <h3 className="text-lg font-medium text-gray-700">Selected Switch: {selectedSwitch.ip}</h3>
                         <VlanForm onSubmit={handleVlanSubmit} />
+                        <button
+                            type="button"
+                            onClick={goBack}
+                            className="mt-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition duration-300"
+                        >
+                            Back to Switch List
+                        </button>
                     </>
                 )}
                 {message && <p className="mt-4 text-gray-600">{message}</p>}
